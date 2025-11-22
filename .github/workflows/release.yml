@@ -1,0 +1,80 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - platform: 'macos-latest'
+            args: '--target aarch64-apple-darwin'
+          - platform: 'macos-latest'
+            args: '--target x86_64-apple-darwin'
+          - platform: 'ubuntu-22.04'
+            args: ''
+          - platform: 'windows-latest'
+            args: ''
+
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Rust stable
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.platform == 'macos-latest' && 'aarch64-apple-darwin,x86_64-apple-darwin' || '' }}
+
+      - name: Install dependencies (ubuntu only)
+        if: matrix.platform == 'ubuntu-22.04'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.0-dev libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
+      - name: Install frontend dependencies
+        run: pnpm install
+
+      - name: Build the app
+        uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tagName: ${{ github.ref_name }}
+          releaseName: 'CC Hub ${{ github.ref_name }}'
+          releaseBody: |
+            ## 🎉 CC Hub Release
+
+            ### ✨ 功能特点
+            - 🔄 多供应商管理
+            - ⚙️ 灵活配置切换
+            - 🚀 一键启动终端
+            - 🎨 主题切换 (Light/Dark/Blue/Purple)
+            - 🌍 中英文双语支持
+            - 👁️ API Key 安全管理
+
+            ### 📦 安装包
+            - macOS (Apple Silicon): .dmg 文件
+            - macOS (Intel): .dmg 文件
+            - Windows: .msi 文件
+            - Linux: .AppImage 文件
+
+            查看完整文档：[README](https://github.com/liuer2024/cc-hub#readme)
+          releaseDraft: false
+          prerelease: false
+          args: ${{ matrix.args }}
