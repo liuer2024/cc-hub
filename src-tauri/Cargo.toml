@@ -1,6 +1,6 @@
 [package]
 name = "cc-hub"
-version = "0.1.0"
+version = "1.0.0"
 description = "CC Hub - Multi-Claude Code Configuration Manager"
 authors = ["you"]
 edition = "2021"
