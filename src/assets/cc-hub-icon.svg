@@ -1,0 +1,32 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 中心 Hub 圆形 -->
+  <circle cx="256" cy="256" r="70" fill="#505050" stroke="#C8C8C8" stroke-width="6"/>
+  <circle cx="256" cy="256" r="35" fill="#FF9800"/>
+  
+  <!-- 连接线 - 从中心到各个节点 -->
+  <line x1="256" y1="256" x2="256" y2="86" stroke="#FF9800" stroke-width="5" opacity="0.5"/>
+  <line x1="256" y1="256" x2="403.2" y2="171" stroke="#F44336" stroke-width="5" opacity="0.5"/>
+  <line x1="256" y1="256" x2="403.2" y2="341" stroke="#9C27B0" stroke-width="5" opacity="0.5"/>
+  <line x1="256" y1="256" x2="256" y2="426" stroke="#2196F3" stroke-width="5" opacity="0.5"/>
+  <line x1="256" y1="256" x2="108.8" y2="341" stroke="#4CAF50" stroke-width="5" opacity="0.5"/>
+  <line x1="256" y1="256" x2="108.8" y2="171" stroke="#FFC107" stroke-width="5" opacity="0.5"/>
+  
+  <!-- 环绕的模型节点 - 6个圆,均匀分布 -->
+  <!-- 节点1: 顶部(12点方向) - 橙色 -->
+  <circle cx="256" cy="86" r="45" fill="#FF9800" stroke="#FFFFFF" stroke-width="5"/>
+  
+  <!-- 节点2: 右上(2点方向) - 红色 -->
+  <circle cx="403.2" cy="171" r="45" fill="#F44336" stroke="#FFFFFF" stroke-width="5"/>
+  
+  <!-- 节点3: 右下(4点方向) - 紫色 -->
+  <circle cx="403.2" cy="341" r="45" fill="#9C27B0" stroke="#FFFFFF" stroke-width="5"/>
+  
+  <!-- 节点4: 底部(6点方向) - 蓝色 -->
+  <circle cx="256" cy="426" r="45" fill="#2196F3" stroke="#FFFFFF" stroke-width="5"/>
+  
+  <!-- 节点5: 左下(8点方向) - 绿色 -->
+  <circle cx="108.8" cy="341" r="45" fill="#4CAF50" stroke="#FFFFFF" stroke-width="5"/>
+  
+  <!-- 节点6: 左上(10点方向) - 黄色 -->
+  <circle cx="108.8" cy="171" r="45" fill="#FFC107" stroke="#FFFFFF" stroke-width="5"/>
+</svg>
