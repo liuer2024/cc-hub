@@ -16,6 +16,18 @@
 - 👁️ **API Key 管理** - 安全的密码隐藏/显示功能
 - 💾 **本地存储** - 所有配置安全存储在本地 `~/.cc-hub` 目录
 
+## 页面图
+
+草图：
+
+![](https://s.i9u.cc/markdown/061821-1.png)
+
+页面图：
+![供应商](https://s.i9u.cc/markdown/061916.png)
+![列表](https://s.i9u.cc/markdown/062021.png)
+![套餐](https://s.i9u.cc/markdown/062047.png)
+
+
 ## 📦 安装
 
 ### 从源码构建
